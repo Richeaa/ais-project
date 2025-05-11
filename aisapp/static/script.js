@@ -333,10 +333,10 @@ document.addEventListener('DOMContentLoaded', function () {
       var myChart = new Chart(myCanvas, {
         type: 'line',
         data: {
-          labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'],
           datasets: [{
             label: 'Last 6 months',
-            data: [35, 27, 40, 15, 30, 25, 45],
+            data: [335, 327, 340, 315, 330, 325, 315],
             cubicInterpolationMode: 'monotone',
             tension: 0.4,
             backgroundColor: ['rgba(95, 46, 234, 1)'],
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function () {
             borderWidth: 2
           }, {
             label: 'Previous',
-            data: [20, 36, 16, 45, 29, 32, 10],
+            data: [120, 136, 216, 145, 229, 132, 269],
             cubicInterpolationMode: 'monotone',
             tension: 0.4,
             backgroundColor: ['rgba(75, 222, 151, 1)'],
@@ -355,8 +355,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
           scales: {
             y: {
-              min: 0,
-              max: 100,
+              min: 100,
+              max: 400,
               ticks: {
                 stepSize: 25
               },
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             title: {
               display: true,
-              text: ['Visitor statistics', 'Nov - July'],
+              text: ['Production Statistics', 'Dec - May'],
               align: 'start',
               color: '#171717',
               font: {
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
         data: {
           labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
           datasets: [{
-            label: '+958',
+            label: '+235',
             data: [90, 10, 80, 20, 70, 30, 50],
             tension: 0.4,
             backgroundColor: function backgroundColor(context) {
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             title: {
               display: true,
-              text: ['New Customers', '28 Daily Avg.'],
+              text: ['New Production', 'Daily Avg'],
               align: 'start',
               color: '#fff',
               font: {
