@@ -43,3 +43,6 @@ def logout(request):
         del request.session['user_id']
         del request.session['username']
     return redirect('signin')
+
+def stock(request):
+    return render(request, 'stock.html')

@@ -427,8 +427,7 @@ html {
 
 .container-form {
   margin:0 auto;
-  padding-top:35px;
-  
+  padding-top:35px;  
 }
 
 .container-fluid {
@@ -1317,8 +1316,16 @@ h3 {
 
 .main-title-form {
   font-weight: bold;
-  font-size: 36px;
+  font-size: 28px;
   line-height: 1.42;
+  color: #171717;
+  margin-bottom: 20px;
+}
+
+.main-title-stock{
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 3.42;
   color: #171717;
   margin-bottom: 20px;
 }
@@ -1977,6 +1984,11 @@ label {
   overflow-x: auto;
   overflow-y: hidden;
   margin-bottom: 20px;
+}
+
+.table-wrapper-stock {
+  overflow-x: auto;
+  margin-bottom:90px;
 }
 
 .table-wrapper table {
@@ -4353,10 +4365,13 @@ label {
   background-color: #8ab1ff;
 }
 
-.darkmode .main-title-form {
+.darkmode .main-title-form, .darkmode .main-title-stock {
   color: #84d8ff;
 }
 
 .darkmode .formproduct label{
   color: #ffffff;
-}
+} 
+
+/* stock */
+
