@@ -417,12 +417,18 @@ html {
   box-sizing: inherit;
 }
 
-.container {
+.container{
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.container-form {
+  margin:0 auto;
+  padding-top:35px;
+  
 }
 
 .container-fluid {
@@ -1304,6 +1310,14 @@ h3 {
 .main-title {
   font-weight: bold;
   font-size: 24px;
+  line-height: 1.42;
+  color: #171717;
+  margin-bottom: 20px;
+}
+
+.main-title-form {
+  font-weight: bold;
+  font-size: 36px;
   line-height: 1.42;
   color: #171717;
   margin-bottom: 20px;
@@ -2638,7 +2652,7 @@ label {
   padding: 24px 19px;
   background-color: #FFFFFF;
   -webkit-box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
-  box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
+  box-shadow: 0px 15px 50px rgba(189, 164, 160, 0.1);
   border-radius: 10px;
   height: 100%;
 }
@@ -3497,7 +3511,7 @@ label {
 }
 
 @media (min-width: 576px) {
-  .container {
+  .container, .container-form {
     max-width: 540px;
   }
 
@@ -4300,4 +4314,45 @@ label {
     -ms-flex-direction: column;
     flex-direction: column;
   }
+}
+
+/* form */
+
+.formproduct {
+  border-radius:10px;
+  max-width:900px;
+}
+
+.formproduct label{
+  font-weight:bold;
+}
+
+.formproduct input[type="text"],
+.formproduct input[type="number"],
+.formproduct textarea,
+.formproduct select {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgb(255, 255, 255);
+    padding: 8px;
+}
+
+.btn-form{
+  padding:15px;
+  background-color: #bad6ff;
+  border-radius:10px;
+}
+
+.btn-form:hover{
+  background-color: #8ab1ff;
+}
+
+.darkmode .main-title-form {
+  color: #84d8ff;
+}
+
+.darkmode .formproduct label{
+  color: #ffffff;
 }
