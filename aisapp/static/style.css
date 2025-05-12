@@ -3515,6 +3515,10 @@ label {
     max-width: 540px;
   }
 
+  .container-form{
+    height: 90vh;
+  }
+
   .col-sm {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
