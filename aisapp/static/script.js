@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
           labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'],
           datasets: [{
             label: 'Last 6 months',
-            data: [335, 327, 340, 315, 330, 325, 315],
+            data: [1335, 1327, 1340, 1315, 1330, 1325, 1315],
             cubicInterpolationMode: 'monotone',
             tension: 0.4,
             backgroundColor: ['rgba(95, 46, 234, 1)'],
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function () {
             borderWidth: 2
           }, {
             label: 'Previous',
-            data: [120, 136, 216, 145, 229, 132, 269],
+            data: [220, 236, 216, 245, 229, 232, 269],
             cubicInterpolationMode: 'monotone',
             tension: 0.4,
             backgroundColor: ['rgba(75, 222, 151, 1)'],
@@ -355,8 +355,8 @@ document.addEventListener('DOMContentLoaded', function () {
         options: {
           scales: {
             y: {
-              min: 100,
-              max: 400,
+              min: 200,
+              max: 2000,
               ticks: {
                 stepSize: 25
               },
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             title: {
               display: true,
-              text: ['Production Statistics', 'Dec - May'],
+              text: ['Total Productions Produced Statistics', 'Dec - May'],
               align: 'start',
               color: '#171717',
               font: {
