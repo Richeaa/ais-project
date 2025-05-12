@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}AIS Project{% endblock %}</title>
  
-  <link rel="shortcut icon" href="{% static 'img/svg/logo.svg' %}" type="image/x-icon">
+  <link rel="shortcut icon" href="{% static 'img/avatar/logo1.svg' %}" type="image/x-icon">
  
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <link rel="stylesheet" href="{% static 'fonts/stylesheet.css' %}">
@@ -25,7 +25,7 @@
   <aside class="sidebar">
     <div class="sidebar-start">
         <div class="sidebar-head">
-            <a href="/" class="logo-wrapper" title="Home">
+            <a href="{% url 'dashboard' %}" class="logo-wrapper" title="Home">
                 <span class="sr-only">Home</span>
                 <span class="icon logo" aria-hidden="true"></span>
                 <div class="logo-text">
