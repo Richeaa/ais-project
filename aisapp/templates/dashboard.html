@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Request Production{% endblock %}</title>
+  <title>{% block title %}AIS Project{% endblock %}</title>
  
   <link rel="shortcut icon" href="{% static 'img/svg/logo.svg' %}" type="image/x-icon">
  
@@ -42,7 +42,7 @@
         <div class="sidebar-body">
             <ul class="sidebar-body-menu">
                 <li>
-                    <a class="active" href="/"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                    <a class="active" href="{% url 'dashboard' %}"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
                 </li>
                 <li>
                     <a href="{% url 'form' %}">
