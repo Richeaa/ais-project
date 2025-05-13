@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Profile
-from .form import productForm
+from .form import productForm, ReportForm
+
 # Create your views here.
 def dashboard(request):
     if 'user_id' not in request.session:
@@ -46,3 +47,17 @@ def logout(request):
 
 def stock(request):
     return render(request, 'stock.html')
+
+def report_view(request):
+    success = False
+    if request.method == 'POST':
+        form = ReportForm(request.POST)
+        if form.is_valid():
+            report = form.save(commit=False)
+            report.user_id = request.session['user_id']  # Link to logged-in user
+            report.save()
+            success = True
+            form = ReportForm()  # Reset the form after submit
+    else:
+        form = ReportForm()
+    return render(request, 'report.html', {'form': form, 'success': success})

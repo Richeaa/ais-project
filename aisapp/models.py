@@ -26,3 +26,17 @@ class Form(models.Model):
     class Meta:
         db_table = 'form'
         managed = False
+        
+class Report(models.Model):
+    report_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, db_column='user_id', related_name='reports')
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.user.username} report {self.title} at {self.submitted_at}"
+    
+    class Meta:
+        db_table = 'report'
+        managed = False

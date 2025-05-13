@@ -60,9 +60,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="comments.html">
+                    <a href="{% url 'report' %}">
                         <span class="icon message" aria-hidden="true"></span>
-                        Comments
+                        Report
                     </a>
                     <span class="msg-counter">7</span>
                 </li>
@@ -70,11 +70,22 @@
             <span class="system-menu__title">system</span>
             <ul class="sidebar-body-menu">
                 <li>
-                    <a href="appearance.html"><span class="icon edit" aria-hidden="true"></span>Appearance</a>
+                    <a href="##"><span class="icon edit" aria-hidden="true"></span>Appearance</a>
                 </li>
             </ul>
         </div>
     </div>
+    <div class="sidebar-footer">
+        <a href="##" class="sidebar-user">
+            <span class="sidebar-user-img">
+            <img src="{% static 'img/avatar/avatar-illustrated-02.png' %}" alt="User name">
+            </span>
+            <div class="sidebar-user-info">
+                <span class="sidebar-user__title">{{ username }}</span>
+                <span class="sidebar-user__subtitle">Product Manager</span>
+            </div>
+        </a>
+    </div>
 </aside>
 
   <div class="main-wrapper">
