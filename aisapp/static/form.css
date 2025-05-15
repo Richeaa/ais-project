@@ -1,0 +1,121 @@
+
+.container-form {
+    max-width: 60%;
+    max-height: 80%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: "Segoe UI", sans-serif;
+    overflow-x: auto;
+}
+
+.container-form h1,
+.container-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.container-form label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    color: #444;
+}
+
+.container-form input,
+.container-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.container-form input:focus,
+.container-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
+
+.container-form .btn-form {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container-form .btn-form:hover {
+    background-color: #0056b3;
+}
+
+.container-form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #fff;
+}
+
+.container-form table th,
+.container-form table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.container-form table th {
+    background-color: #e9ecef;
+}
+
+.container-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: vertical; /* biar bisa diubah tingginya */
+    min-height: 100px;
+}
+.container-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
+.container-form a.btn-action {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 2px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.container-form a.btn-edit {
+    background-color: #17a2b8; 
+}
+
+.container-form a.btn-edit:hover {
+    background-color: #117a8b;
+}
+
+.container-form a.btn-delete {
+    background-color: #dc3545; 
+}
+
+.container-form a.btn-delete:hover {
+    background-color: #bd2130;
+}
+

@@ -10,7 +10,7 @@ class Profile(models.Model):
     
     class Meta:
         db_table = 'profile'
-        managed = False 
+        managed = False
 
 class Form(models.Model):
     form_id = models.AutoField(primary_key=True)
@@ -26,7 +26,7 @@ class Form(models.Model):
     class Meta:
         db_table = 'form'
         managed = False
-        
+
 class Report(models.Model):
     report_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, db_column='user_id', related_name='reports')
@@ -39,4 +39,38 @@ class Report(models.Model):
     
     class Meta:
         db_table = 'report'
+        managed = False
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'product'
+        managed = False
+
+class Inventory(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+
+    class Meta:
+        db_table = 'inventory'
+        managed = False
+
+class ProductionSchedule(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    start_date = models.DateField()
+    estimated_end_date = models.DateField()
+    priority = models.IntegerField()
+
+    class Meta:
+        db_table = 'production_schedule'
+        managed = False
+
+class ProductionIssue(models.Model):
+    issue_time = models.DateTimeField(auto_now_add=True)
+    issue_type = models.CharField(max_length=50, choices=[('Machine', 'Machine'), ('Material', 'Material'), ('Human', 'Human Error')])
+    description = models.TextField()
+
+    class Meta:
+        db_table = 'production_issue'
         managed = False

@@ -1,0 +1,36 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<div class="container-form">
+    <h1 class='main-title-form'> Production Plan </h1>
+
+    <h2>Edit Production Issue</h2>
+<form method="POST">
+  {% csrf_token %}
+  <label>Issue Type:</label>
+  <select name="issue_type">
+    <option value="Machine" {% if issue.issue_type == "Machine" %}selected{% endif %}>Machine</option>
+    <option value="Material" {% if issue.issue_type == "Material" %}selected{% endif %}>Material</option>
+    <option value="Human" {% if issue.issue_type == "Human" %}selected{% endif %}>Human Error</option>
+  </select><br>
+
+  <label>Description:</label>
+  <textarea name="description" rows="4" cols="40">{{ issue.description }}</textarea><br>
+
+  <button type="submit" class="btn-form">Update</button>
+</form>
+</div>
+{% if success %}
+    <script>
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Report submitted successfully.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      });
+    </script>
+    {% endif %}
+{% endblock %}

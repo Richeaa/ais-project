@@ -61,3 +61,87 @@ def report_view(request):
     else:
         form = ReportForm()
     return render(request, 'report.html', {'form': form, 'success': success})
+
+from .models import ProductionSchedule, ProductionIssue, Product
+from django.utils import timezone
+
+def production_plan(request):
+    success = False
+    if request.method == 'POST':
+        product_id = request.POST.get('product')
+        start_date = request.POST.get('start_date')
+        estimated_end = request.POST.get('estimated_end')
+        priority = request.POST.get('priority')
+
+        ProductionSchedule.objects.create(
+            product_id=int(product_id),
+            start_date=start_date,
+            estimated_end_date=estimated_end,
+            priority=priority
+        )
+        success = True 
+
+    plans = ProductionSchedule.objects.all()
+    products = Product.objects.all()
+    return render(request, 'production_plan.html', {'plans': plans, 'products': products, 'success': success})
+
+def production_issue(request):
+    success = False
+    if request.method == 'POST':
+        issue_type = request.POST.get('issue_type')
+        description = request.POST.get('description')
+
+        ProductionIssue.objects.create(
+            issue_type=issue_type,
+            description=description
+        )
+        success = True 
+
+    issues = ProductionIssue.objects.all()
+    return render(request, 'production_issue.html', {'issues': issues, 'success': success})
+
+# Edit Production Plan
+def edit_production_plan(request, id):
+    plan = ProductionSchedule.objects.get(id=id)
+    products = Product.objects.all()
+    success = False
+
+    if request.method == 'POST':
+        plan.product_id = request.POST.get('product')
+        plan.start_date = request.POST.get('start_date')
+        plan.estimated_end_date = request.POST.get('estimated_end')
+        plan.priority = request.POST.get('priority')
+        plan.save()
+        success = True
+
+    return render(request, 'edit_production_plan.html', {
+        'plan': plan,
+        'products': products,
+        'success': success
+    })
+
+# Delete Production Plan
+def delete_production_plan(request, id):
+    ProductionSchedule.objects.get(id=id).delete()
+    return redirect('production_plan')
+
+# Edit Production Issue
+def edit_production_issue(request, id):
+    issue = ProductionIssue.objects.get(id=id)
+    success = False
+
+    if request.method == 'POST':
+        issue.issue_type = request.POST.get('issue_type')
+        issue.description = request.POST.get('description')
+        issue.save()
+        success = True
+
+    return render(request, 'edit_production_issue.html', {
+        'issue': issue,
+        'success': success
+    })
+
+# Delete Production Issue
+def delete_production_issue(request, id):
+    ProductionIssue.objects.get(id=id).delete()
+    return redirect('production_issue')
