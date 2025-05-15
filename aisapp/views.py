@@ -1,25 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Profile
 from .form import productForm, ReportForm
+from .models import ProductionSchedule, ProductionIssue, Product
 
 # Create your views here.
 def dashboard(request):
     if 'user_id' not in request.session:
         return redirect('signin')
     return render(request, 'dashboard.html', {'username': request.session.get('username')})
-
-def form_view(request):
-    success = False
-    if request.method == 'POST':
-        form = productForm(request.POST)
-        if form.is_valid():
-            form.save()
-            success = True
-            form = productForm() 
-    else:
-        form = productForm()
-    return render(request, 'form.html', {'form': form, 'success': success})
-
 
 def signin(request):
     if request.method == 'POST':
@@ -45,13 +33,34 @@ def logout(request):
         del request.session['username']
     return redirect('signin')
 
+def form_view(request):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
+    success = False
+    if request.method == 'POST':
+        form = productForm(request.POST)
+        if form.is_valid():
+            form.save()
+            success = True
+            form = productForm() 
+    else:
+        form = productForm()
+    return render(request, 'form.html', {'form': form, 'success': success})
+
 def stock(request):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     return render(request, 'stock.html')
 
 def report_view(request):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     success = False
     if request.method == 'POST':
-        form = ReportForm(request.POST)
+        form = ReportForm(request.POST, request.FILES)
         if form.is_valid():
             report = form.save(commit=False)
             report.user_id = request.session['user_id']  # Link to logged-in user
@@ -62,10 +71,10 @@ def report_view(request):
         form = ReportForm()
     return render(request, 'report.html', {'form': form, 'success': success})
 
-from .models import ProductionSchedule, ProductionIssue, Product
-from django.utils import timezone
-
 def production_plan(request):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     success = False
     if request.method == 'POST':
         product_id = request.POST.get('product')
@@ -86,6 +95,9 @@ def production_plan(request):
     return render(request, 'production_plan.html', {'plans': plans, 'products': products, 'success': success})
 
 def production_issue(request):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     success = False
     if request.method == 'POST':
         issue_type = request.POST.get('issue_type')
@@ -102,6 +114,9 @@ def production_issue(request):
 
 # Edit Production Plan
 def edit_production_plan(request, id):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     plan = ProductionSchedule.objects.get(id=id)
     products = Product.objects.all()
     success = False
@@ -122,11 +137,17 @@ def edit_production_plan(request, id):
 
 # Delete Production Plan
 def delete_production_plan(request, id):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     ProductionSchedule.objects.get(id=id).delete()
     return redirect('production_plan')
 
 # Edit Production Issue
 def edit_production_issue(request, id):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     issue = ProductionIssue.objects.get(id=id)
     success = False
 
@@ -143,5 +164,8 @@ def edit_production_issue(request, id):
 
 # Delete Production Issue
 def delete_production_issue(request, id):
+    if 'user_id' not in request.session:
+        return redirect('signin')
+    
     ProductionIssue.objects.get(id=id).delete()
     return redirect('production_issue')

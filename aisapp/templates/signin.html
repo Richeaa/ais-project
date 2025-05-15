@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +7,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elegant Dashboard | Sign In</title>
+  <title>Sign In</title>
   <!-- Favicon -->
   <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
   <!-- Custom styles -->
-  <link rel="stylesheet" href="./css/style.min.css">
+  <link rel="stylesheet" href="{% static 'signin.css' %}">
 </head>
 
 <body>
@@ -25,13 +27,9 @@
     <input class="form-input" name="username" placeholder="Enter your username" required>
   </label>
   <label class="form-label-wrapper">
+    <div class="form-spacer"></div>
     <p class="form-label">Password</p>
     <input class="form-input" type="password" name="password" placeholder="Enter your password" required>
-  </label>
-  <a class="link-info forget-link" href="#">Forgot your password?</a>
-  <label class="form-checkbox-wrapper">
-    <input class="form-checkbox" type="checkbox">
-    <span class="form-checkbox-label">Remember me next time</span>
   </label>
   {% if error %}
     <p style="color: red;">{{ error }}</p>
@@ -41,12 +39,6 @@
 
   </article>
 </main>
-<!-- Chart library -->
-<script src="./plugins/chart.min.js"></script>
-<!-- Icons library -->
-<script src="plugins/feather.min.js"></script>
-<!-- Custom scripts -->
-<script src="js/script.js"></script>
 </body>
 
 </html>

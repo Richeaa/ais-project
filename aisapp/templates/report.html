@@ -2,16 +2,30 @@
 {% load static %}
 
     {% block content %}
-    <div class="container-form">
-    <h1 class= 'main-title-form'> Report </h1>
+<div class="container-form">
+  <h1 class="main-title-form">Submit General Report</h1>
+  <form method="POST" enctype="multipart/form-data" class="form-text-report">
+    {% csrf_token %}
 
-    <form method = 'POST' class="formproduct">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn-form">Submit Report</button>
-    </form>
+    <div class="form-group">
+      <label for="id_title">Title</label>
+      {{ form.title }}
     </div>
-   
+
+    <div class="form-group">
+      <label for="id_content">Content</label>
+      {{ form.content }}
+    </div>
+
+    <div class="form-group file-section">
+      <label for="id_file">Upload File (optional)</label>
+      {{ form.file }}
+    </div>
+
+    <button type="submit" class="btn-form">Submit</button>
+  </form>
+</div>
+
      {% if success %}
     <script>
       Swal.fire({

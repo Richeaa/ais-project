@@ -32,6 +32,7 @@ class Report(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, db_column='user_id', related_name='reports')
     title = models.CharField(max_length=150)
     content = models.TextField()
+    file = models.FileField(upload_to='uploads/reports/', null=True, blank=True)
     submitted_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
@@ -40,7 +41,7 @@ class Report(models.Model):
     class Meta:
         db_table = 'report'
         managed = False
-
+        
 class Product(models.Model):
     name = models.CharField(max_length=100)
 
