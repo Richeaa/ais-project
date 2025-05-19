@@ -518,3 +518,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   addData();
 });
+
+
+document.querySelectorAll('.download-btn').forEach(button => {
+  button.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const product = button.getAttribute('data-product');
+    const user = button.getAttribute('data-user');
+    const date = button.getAttribute('data-date');
+    const status = button.getAttribute('data-status');
+
+    const response = await fetch('/generate-document/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': '{{ csrf_token }}'
+      },
+      body: JSON.stringify({ product, user, date, status })
+    });
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${product}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
+});

@@ -1,5 +1,6 @@
 from django.urls import path
 from aisapp import views
+from .views import generate_document
 
 urlpatterns = [
     path('', views.signin, name ='signin'),
@@ -14,4 +15,5 @@ urlpatterns = [
     path('production-issue/', views.production_issue, name='production_issue'),
     path('production-issue/edit/<int:id>/', views.edit_production_issue, name='edit_production_issue'),
     path('production-issue/delete/<int:id>/', views.delete_production_issue, name='delete_production_issue'),
+    path('generate-document/', generate_document, name='generate_document'),
 ]

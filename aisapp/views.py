@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from .models import Profile
 from .form import productForm, ReportForm
 from .models import ProductionSchedule, ProductionIssue, Product
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+import io
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def dashboard(request):
@@ -169,3 +174,33 @@ def delete_production_issue(request, id):
     
     ProductionIssue.objects.get(id=id).delete()
     return redirect('production_issue')
+
+@csrf_exempt
+def generate_document(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            product = data.get('product')
+            user = data.get('user')
+            date = data.get('date')
+            status = data.get('status')
+
+            if not all([product, user, date]):
+                return HttpResponse("Missing data", content_type="text/plain", status=400)
+
+            buffer = io.BytesIO()
+            p = canvas.Canvas(buffer)
+            p.drawString(100, 800, f"Produk: {product}")
+            p.drawString(100, 780, f"User: {user}")
+            p.drawString(100, 760, f"Tanggal: {date}")
+            p.drawString(100, 740, f"Status: {status}")
+            p.showPage()
+            p.save()
+
+            buffer.seek(0)
+            response = HttpResponse(buffer, content_type='application/pdf')
+            response['Content-Disposition'] = f'inline; filename="{product}.pdf"'
+            return response
+
+        except Exception as e:
+            return HttpResponse(f"Error: {str(e)}", content_type="text/plain", status=500)
