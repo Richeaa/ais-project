@@ -40,7 +40,7 @@ class Report(models.Model):
     
     class Meta:
         db_table = 'report'
-        managed = False
+        managed = True
         
 class Product(models.Model):
     name = models.CharField(max_length=100)
