@@ -1037,7 +1037,7 @@ body {
 }
 
 .menu-toggle {
-  background-image: url(img/svg/Bulk/Menu-toggle-white.svg);
+  background-image:  url('/static/img/svg/Bulk/Menu-toggle-white.svg');
   width: 24px;
   height: 24px;
 }
@@ -3966,6 +3966,7 @@ label {
   .sidebar.hidden * {
     font-size: 0px;
   }
+  
 
   .sidebar.hidden .sidebar-head {
     -webkit-box-pack: center;

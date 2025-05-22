@@ -17,7 +17,6 @@
 </head>
 
 <body>
-  <div class="layer"></div>
 <!-- ! Body -->
 <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
 <div class="page-flex">
@@ -586,6 +585,26 @@
 <script src="{% static 'plugins/feather.min.js' %}"></script>
 
 <script src="{% static 'script.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const sidebar = document.querySelector('.sidebar');
+  const catSubMenu = document.querySelector('.cat-sub-menu');
+  const sidebarBtns = document.querySelectorAll('.sidebar-toggle');
+
+  console.log('Sidebar buttons count:', sidebarBtns.length);
+
+  sidebarBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      console.log('Toggle button clicked');
+      sidebarBtns.forEach(button => button.classList.toggle('rotated'));
+      sidebar.classList.toggle('hidden');
+      if(catSubMenu) catSubMenu.classList.remove('visible');
+    });
+  });
+});
+</script>
+<script src="{% static 'js/sidebar-toggle.js' %}" defer></script>
+
 </body>
 
 </html>

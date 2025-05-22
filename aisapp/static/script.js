@@ -25,45 +25,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   feather.replace();
 
-  (function () {
-    var sidebar = document.querySelector('.sidebar'),
-        catSubMenu = document.querySelector('.cat-sub-menu'),
-        sidebarBtns = document.querySelectorAll('.sidebar-toggle');
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM ready');
 
-    var _iterator = _createForOfIteratorHelper(sidebarBtns),
-        _step;
+  var sidebar = document.querySelector('.sidebar');
+  var catSubMenu = document.querySelector('.cat-sub-menu');
+  var sidebarBtns = document.querySelectorAll('.sidebar-toggle');
 
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var sidebarBtn = _step.value;
+  console.log('Sidebar btns:', sidebarBtns.length);
 
-        if (sidebarBtn && catSubMenu && sidebarBtn) {
-          sidebarBtn.addEventListener('click', function () {
-            var _iterator2 = _createForOfIteratorHelper(sidebarBtns),
-                _step2;
-
-            try {
-              for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                var sdbrBtn = _step2.value;
-                sdbrBtn.classList.toggle('rotated');
-              }
-            } catch (err) {
-              _iterator2.e(err);
-            } finally {
-              _iterator2.f();
-            }
-
-            sidebar.classList.toggle('hidden');
-            catSubMenu.classList.remove('visible');
-          });
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
+  sidebarBtns.forEach(function(sidebarBtn) {
+    console.log('Adding listener to:', sidebarBtn);
+    if (sidebarBtn && catSubMenu) {
+      sidebarBtn.addEventListener('click', function () {
+        console.log('Toggle button clicked');
+        sidebarBtns.forEach(function(btn) {
+          btn.classList.toggle('rotated');
+        });
+        sidebar.classList.toggle('hidden');
+        catSubMenu.classList.remove('visible');
+      });
     }
-  })();
+  });
+});
 
   (function () {
     var showCatBtns = document.querySelectorAll('.show-cat-btn');
