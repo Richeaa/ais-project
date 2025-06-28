@@ -9,3 +9,4 @@ This project is a simplified CRUD-based web application designed to model a comp
 - Using interactive dashboard template
 - **User Login & Logout** authentication system
 - Production flowchart
+- Built using Django framework
